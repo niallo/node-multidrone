@@ -1,0 +1,23 @@
+{
+  "name": "node-multidrone",
+  "version": "0.0.0",
+  "description": "Node.JS program to configure AR Parrot drones to share a Wifi network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/niallo/node-multidrone.git"
+  },
+  "keywords": [
+    "node",
+    "parrot",
+    "drone",
+    "ar"
+  ],
+  "author": "Niall O'Higgins",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "a76e7e40ea22ffc045ed3317681f2b8e04919cb5"
+}
