@@ -40,6 +40,16 @@ In a few seconds, you should be able to connect to wifi network `robofriend` and
 
 Success!
 
+## Multiple Drones
+
+To control multiple drones, you need to establish the following conditions:
+
+- Each drone must be on the same SSID
+- Each drone must have a separate static IP on the same network
+- Client machine must be on same wifi network as drones
+- Client machine should send control commands to the different IPs of drones.
+
+
 ## Scripts
 
 Script to change IP and SSIDs on the Drone:
