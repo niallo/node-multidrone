@@ -8,6 +8,10 @@ sed -e "s/PROBE=.*/PROBE=$IP/g" $WIFI_SETUP.old > $WIFI_SETUP
 # copy current config.ini to backup
 cp $DATA_CONFIG $DATA_CONFIG.old
 sed -e "s/\(^ssid_single_player.*=\).*/\1 $SSID/g" $DATA_CONFIG.old > $DATA_CONFIG
+# set wifi_mode to 1 for adhoc network
+cp $DATA_CONFIG $DATA_CONFIG.tmp
+sed -e "s/\(^wifi_mode.*=\).*/\1 1/g" $DATA_CONFIG.tmp > $DATA_CONFIG
+rm -f $DATA_CONFIG.tmp
 
 # apply the new network config
 echo !!!! Reconfiguring drone.
