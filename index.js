@@ -2,18 +2,19 @@ var fs   = require('fs');
 var net  = require('net');
 var path = require('path');
 
-// require('multidrone')('192.168.1.1', 23)
+// require('multidrone')('192.168.1.201', 'shared_drone_ssid', '192.168.1.1')
 module.exports = function(desiredIP, ssid, currentIP) {
 
     if (!desiredIP) desiredIP = '192.168.1.201';
     if (!ssid) ssid = 'shared_drone_ssid';
     if (!currentIP) currentIP = '192.168.1.1';
 
-    var port   = 23;
-    var telnet = net.connect(port, currentIP);
-    telnet.on('error', console.error);
-    // telnet.on('data', function (data) { console.log('DATA="%s"', data.toString()); });
-    telnet.on('end', function() { console.log('client disconnected'); });
+    var telnetPort   = 23;
+    var telnetSocket = net.connect(telnetPort, currentIP);
+
+    telnetSocket.on('error', console.error);
+    // telnetSocket.on('data', function (data) { console.log('DATA="%s"', data.toString()); });
+    telnetSocket.on('end', function() { console.log('client disconnected'); });
 
     var __dirname = __dirname || process.cwd();
     var scriptPath = path.join(__dirname, "change_ssid_and_ip.txt");
@@ -26,8 +27,8 @@ module.exports = function(desiredIP, ssid, currentIP) {
     for (var i=0, l=commands.length, command; i < l; i++) {
         command = commands[i];
         console.log('COMMAND:', command);
-        telnet.write(command + '\n');
+        telnetSocket.write(command + '\n');
     }
-    telnet.end();
+    telnetSocket.end();
 
 };
