@@ -25,7 +25,7 @@ sed -e "s/PROBE=.*/PROBE=$IP/g" $WIFI_SETUP.old > $WIFI_SETUP
 
 # copy current config.ini to backup
 cp $DATA_CONFIG $DATA_CONFIG.old
-sed -e "s/ssid_single_player=.*/ssid_single_player=$SSID/g" $DATA_CONFIG.old > $DATA_CONFIG
+sed -e "s/\(^ssid_single_player.*=\).*/\1 $SSID/g" $DATA_CONFIG.old > $DATA_CONFIG
 
 # apply the new network config
 echo !!!! Reconfiguring drone.
