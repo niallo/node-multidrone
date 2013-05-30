@@ -52,6 +52,10 @@ To control multiple drones, you need to establish the following conditions:
 - Client machine must be on same wifi network as drones
 - Client machine should send control commands to the different IPs of drones.
 
+### Mac OS X Note:
+
+Macs seem to be finnicky with ad-hoc wifi networks. If you get an error connecting to the ad-hoc network after configuring your drones, try rebooting your Mac.
+
 
 ## Scripts
 
