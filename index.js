@@ -18,17 +18,18 @@ module.exports = function(desiredIP, ssid, currentIP) {
 
     var __dirname = __dirname || process.cwd();
     var scriptPath = path.join(__dirname, "change_ssid_and_ip.txt");
-    var commands   = fs.readFileSync(scriptPath, 'utf8').split('\n').filter(function (line) { return (line !== '') && line[0] !== '#'; })
+    var commands   = fs.readFileSync(scriptPath, 'utf8').split('\n');
     var lastOctet  = desiredIP.split('.').pop();
 
+    commands = commands.filter(function (line) {
+        return (line !== '') && line[0] !== '#';
+    });
     commands.unshift("export IP='" + lastOctet + "'");
     commands.unshift("export SSID='" + ssid + "'");
-    console.log('COMMANDS', commands);
+
     for (var i=0, l=commands.length, command; i < l; i++) {
         command = commands[i];
-        console.log('COMMAND:', command);
         telnetSocket.write(command + '\n');
     }
     telnetSocket.end();
-
 };
